@@ -199,15 +199,19 @@ export const menus = [
     submenu: [
       {
         title: "User Dashboard",
-        url: "/personal-info",
+        url: "/passager-dashboard",
       },
       {
-        title: "Vendor Dashboard",
-        url: "/vendor-dashboard",
+        title: "conductor Dashboard",
+        url: "/conductor-dashboard",
       },
       {
         title: "Admin Dashboard",
         url: "/admin-dashboard",
+      },
+      {
+        title: "Passager Dashboard",
+        url: "/passager-dashboard",
       },
     ],
   },
