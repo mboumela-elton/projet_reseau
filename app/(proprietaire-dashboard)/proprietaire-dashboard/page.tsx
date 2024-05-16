@@ -6,13 +6,13 @@ import {
   TrashIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import Pagination from "@/Components/vendor-dashboard/Pagination";
+import Pagination from "../../../components/vendor-dashboard/Pagination";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { adminRecentListings } from "../../../public/data/adminrecentlisting";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
-import HeadlessList from "@/Components/ListBox";
-import CounterElement from "@/Components/CounterElement";
+import HeadlessList from "../../../components/ListBox";
+import CounterElement from "../../../components/CounterElement";
 
 const Page = () => {
   return (
