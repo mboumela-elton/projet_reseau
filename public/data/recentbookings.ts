@@ -7,7 +7,8 @@ export const recentBookings = [
       date: '25/05/2023',
       time: '08:20',
       status: 'Rejected',
-      name:'Antique Ford Hotel'
+      name:'Antique Ford Hotel',
+      review: '4'
     },
     {
       id: '02',
@@ -17,7 +18,8 @@ export const recentBookings = [
       date: '26/05/2023',
       time: '10:45',
       status: 'Pending',
-      name:'Refresh Resort'
+      name:'Refresh Resort',
+      review: '4'
     },
     {
       id: '03',
@@ -27,7 +29,8 @@ export const recentBookings = [
       date: '27/05/2023',
       time: '12:30',
       status: 'Successfull',
-      name:'Essence Hotel'
+      name:'Essence Hotel',
+      review: '4'
     },
     {
       id: '04',
@@ -37,7 +40,8 @@ export const recentBookings = [
       date: '28/05/2023',
       time: '14:15',
       status: 'Successfull',
-      name:'Vertex Hotel'
+      name:'Vertex Hotel',
+      review: '4'
     },
     {
       id: '05',
@@ -48,6 +52,7 @@ export const recentBookings = [
       date: '29/05/2023',
       time: '16:00',
       status: 'Pending',
+      review: '4'
     },
     {
       id: '06',
@@ -58,6 +63,7 @@ export const recentBookings = [
       date: '30/05/2023',
       time: '18:30',
       status: 'Successfull',
+      review: '4'
     },
     {
       id: '07',
@@ -68,6 +74,7 @@ export const recentBookings = [
       date: '31/05/2023',
       time: '20:45',
       status: 'Rejected',
+      review: '4'
     },
     {
       id: '08',
@@ -78,6 +85,7 @@ export const recentBookings = [
       date: '29/05/2023',
       time: '16:00',
       status: 'Pending',
+      review: '4'
     },
     {
       id: '09',
@@ -88,6 +96,7 @@ export const recentBookings = [
       date: '30/05/2023',
       time: '18:30',
       status: 'Successfull',
+      review: '4'
     },
     {
       id: '10',
@@ -98,6 +107,7 @@ export const recentBookings = [
       date: '31/05/2023',
       time: '20:45',
       status: 'Rejected',
+      review: '4'
     },
   ];
   
