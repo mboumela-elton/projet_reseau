@@ -182,7 +182,7 @@ const Page = () => {
         </div>
         <div className="col-span-12 xxl:col-span-6 rounded-2xl p-4 md:p-6 lg:p-8 bg-white border">
           <div className="flex justify-between flex-wrap gap-3 items-center mb-6">
-            <h3 className="h3">Nombre d'Utilsateurs Par Profil</h3>
+            <h3 className="h3">Nombre d Utilsateurs Par Profil</h3>
             <div className="grid grid-cols-12 gap-4 lg:gap-6 px-4 lg:px-6 pt-4 lg:pt-6">
               <div className="col-span-12 sm:col-span-6 border xl:col-span-4 xxl:col-span-4 flex flex-col justify-center items-center p-4 md:p-6 lg:p-8 rounded-2xl bg-white">
                 <div className="w-[200px] h-[200px] flex justify-center items-center rounded-full border-primary border-[14px]">
