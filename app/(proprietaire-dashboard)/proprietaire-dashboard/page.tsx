@@ -50,9 +50,9 @@ const Page = () => {
                 {adminRecentListings.map(
                   ({
                     id,
-                    heureDepart,
+                    // heureDepart,
                     date,
-                    itineraire,
+                    // itineraire,
                     name,
                     review,
                     status,
@@ -63,9 +63,9 @@ const Page = () => {
                     >
                       <td className="py-3 lg:py-4 px-2 xl:px-4">{name}</td>
                       <td className="py-3 lg:py-4 px-2 text-primary">
-                        {itineraire}
+                        itineraire
                       </td>
-                      <td className="py-3 lg:py-4 px-2">{heureDepart}</td>
+                      <td className="py-3 lg:py-4 px-2">heureDepart</td>
                       <td className="py-3 lg:py-4 px-2">{date}</td>
 
                       <td className={`py-3 lg:py-4 px-2`}>
