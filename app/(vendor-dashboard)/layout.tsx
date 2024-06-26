@@ -180,7 +180,7 @@ export default function RootLayout({
               </div>
             </div>
             <Link href="/add-property" className="btn-primary">
-              <PlusCircleIcon className="w-5 h-5" /> Add New Listing
+              <PlusCircleIcon className="w-5 h-5" /> Ajouter une disponibilité
             </Link>
           </div>
           <section>{children}</section>

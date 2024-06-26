@@ -13,14 +13,17 @@ import CounterElement from "@/components/CounterElement";
 
 const Page = () => {
   return (
-    <div>
+    <div className="bg-[var(--bg-2)]">
+      <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
+        <h2 className="h2 text-white">Dashboard Conducteur sans véhicule</h2>
+      </div>
       {/* statisticts */}
       <div className="grid z-[1] grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 px-6 bg-[var(--dark)] relative after:absolute xxl:after:bg-white after:w-full after:h-[50%] after:bottom-0 after:left-0 after:z-[-1] pb-10 xxl:pb-0">
         <div className="col-span-1 sm:col-span-1 p-4 sm:p-6 lg:p-8 rounded-2xl flex gap-4 bg-[#EBFBF2]">
           <i className="las self-center la-chart-area rounded-full bg-[var(--secondary-500)] text-white text-3xl p-4"></i>
           <div>
             <h2 className="h2">
-              $ <CounterElement end={25} />k
+              $ <CounterElement end={26} />k
             </h2>
             <p>Gain par Vehicule</p>
             <div className="flex items-center gap-3">
@@ -31,7 +34,7 @@ const Page = () => {
                   <option value="2">Last 7 Week</option>
                   <option value="3">Last 7 Days</option>
                 </select>
-              </div> 
+              </div>
             </div>
           </div>
         </div>
@@ -39,7 +42,6 @@ const Page = () => {
           <i className="las self-center la-chart-bar rounded-full bg-[#9C742B] text-white text-3xl p-4"></i>
           <div>
             <h2 className="h2">
-              {" "}
               <CounterElement end={6.4} decimals={1} />k
             </h2>
             <p>Voyages publiés</p>
@@ -51,7 +53,7 @@ const Page = () => {
                   <option value="2">Last 7 Week</option>
                   <option value="3">Last 7 Days</option>
                 </select>
-              </div> 
+              </div>
             </div>
           </div>
         </div>
@@ -73,7 +75,8 @@ const Page = () => {
             <h3 className="h3">Historique de publications</h3>
             <Link
               href="/"
-              className="text-primary font-semibold flex items-center gap-2">
+              className="text-primary font-semibold flex items-center gap-2"
+            >
               Tout voir <ArrowRightIcon className="w-5 h-5" />
             </Link>
           </div>
@@ -89,7 +92,6 @@ const Page = () => {
                   <th className="py-3 px-2">Durée</th>
                   <th className="py-3 px-2">Status</th>
                   <th className="py-3 lg:py-4 px-2">Avis</th>
-                  <th className="py-3 lg:py-4 px-2">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -104,9 +106,16 @@ const Page = () => {
                       <td className="py-3 px-2">{time}</td>
                       <td className={`py-3 px-2`}>
                         <span
-                          className={`py-2 px-3 rounded-xl ${status == "Rejected" &&
-                            "text-[var(--secondary-500)] bg-[#EBFBF2]"} ${status == "Successfull" &&
-                            "text-primary bg-[#EBEBFD]"} ${status == "Pending" && "text-[#9C742B] bg-[#FFF9ED]"}`}>
+                          className={`py-2 px-3 rounded-xl ${
+                            status == "Rejected" &&
+                            "text-[var(--secondary-500)] bg-[#EBFBF2]"
+                          } ${
+                            status == "Successfull" &&
+                            "text-primary bg-[#EBEBFD]"
+                          } ${
+                            status == "Pending" && "text-[#9C742B] bg-[#FFF9ED]"
+                          }`}
+                        >
                           {status}
                         </span>
                       </td>
@@ -115,14 +124,6 @@ const Page = () => {
                           <StarIcon className="w-5 h-5 text-[var(--tertiary)]" />
                           {review}
                         </span>
-                      </td>
-                      <td className="py-3 lg:py-4 px-2">
-                        <button className="text-primary px-2">
-                          <PencilSquareIcon className="w-5 h-5" />
-                        </button>
-                        <button className="text-[var(--secondary-500)] px-2">
-                          <TrashIcon className="w-5 h-5" />
-                        </button>
                       </td>
                     </tr>
                   )

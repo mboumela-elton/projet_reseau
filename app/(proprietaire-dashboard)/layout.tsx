@@ -7,6 +7,8 @@ import {
   ArrowRightOnRectangleIcon,
   Bars3Icon,
   BuildingStorefrontIcon,
+  PlusCircleIcon,
+  CheckIcon,
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import { SearchIcon } from "@/public/data/icons";
@@ -35,11 +37,13 @@ export default function RootLayout({
         <nav
           className={`${
             navOpen ? "ml-0" : "ml-[-312px]"
-          } lg:ml-0 w-[270px] sm:w-[312px] transiton-all duration-300 ease-out z-20 overflow-x-hidden overflow-y-auto fixed top-0 bottom-0 bg-white flex flex-col border-r p-3 md:p-8 min-h-screen shadow-lg lg:shadow-none scrollbarthin`}>
+          } lg:ml-0 w-[270px] sm:w-[312px] transiton-all duration-300 ease-out z-20 overflow-x-hidden overflow-y-auto fixed top-0 bottom-0 bg-white flex flex-col border-r p-3 md:p-8 min-h-screen shadow-lg lg:shadow-none scrollbarthin`}
+        >
           <div className="grow">
             <Link
               href="/"
-              className="inline-flex items-center pb-4 lg:pb-9 border-b border-dashed">
+              className="inline-flex items-center pb-4 lg:pb-9 border-b border-dashed"
+            >
               <Image src={Logo} alt="logo" />
             </Link>
             <ul className="py-5">
@@ -48,7 +52,8 @@ export default function RootLayout({
                   href="/admin-dashboard"
                   className={`flex items-center hover:bg-primary hover:text-white gap-2 rounded-md px-5 py-3 duration-300 ${
                     path == "/admin-dashboard" && "bg-primary text-white"
-                  }`}>
+                  }`}
+                >
                   <BuildingStorefrontIcon className="w-5 h-5" />
                   Dashboard
                 </Link>
@@ -63,7 +68,8 @@ export default function RootLayout({
                       href={url}
                       className={`flex items-center hover:bg-primary hover:text-white gap-2 rounded-md px-5 py-3 duration-300 ${
                         path == url && "bg-primary text-white"
-                      }`}>
+                      }`}
+                    >
                       {icon}
                       {name}
                     </Link>
@@ -74,7 +80,8 @@ export default function RootLayout({
                       }
                       className={`justify-between px-5 py-3 hover:bg-primary hover:text-white rounded-md duration-300 flex w-full items-center ${
                         id == opened && "bg-primary text-white"
-                      }`}>
+                      }`}
+                    >
                       <span className="flex gap-2 items-center">
                         {icon}
                         {name}
@@ -91,7 +98,8 @@ export default function RootLayout({
                   {submenus && (
                     <AnimateHeight
                       duration={300}
-                      height={opened == id ? "auto" : 0}>
+                      height={opened == id ? "auto" : 0}
+                    >
                       <ul className={`px-3 mt-1 flex flex-col gap-1`}>
                         {submenus.map((item) => (
                           <li key={item.title}>
@@ -99,7 +107,8 @@ export default function RootLayout({
                               href={item.url}
                               className={`flex gap-2 items-center pl-4 pr-1 py-3 hover:bg-violet-200 duration-300 rounded-md ${
                                 item.url == path && "bg-violet-200"
-                              }`}>
+                              }`}
+                            >
                               {icon}
                               {item.title}
                             </Link>
@@ -116,7 +125,8 @@ export default function RootLayout({
             <li>
               <Link
                 href="/"
-                className={`flex items-center gap-2 rounded-md px-6 py-3 hover:bg-primary hover:text-white duration-300`}>
+                className={`flex items-center gap-2 rounded-md px-6 py-3 hover:bg-primary hover:text-white duration-300`}
+              >
                 <ArrowRightOnRectangleIcon className="w-5 h-5" />
                 Log out
               </Link>
@@ -128,11 +138,13 @@ export default function RootLayout({
             navOpen &&
             "after:bg-black after:bg-opacity-70 after:absolute after:inset-0 after:z-10 after:duration-300 overflow-y-hidden"
           }`}
-          onClick={() => setNavOpen(false)}>
+          onClick={() => setNavOpen(false)}
+        >
           <header className="px-4 md:px-8 py-3 lg:py-6 flex gap-2 justify-between self-start">
             <button
               onClick={handleOpen}
-              className="lg:hidden order-2 select-none">
+              className="lg:hidden order-2 select-none"
+            >
               <Bars3Icon className="w-8 h-8" />
             </button>
             <form className="rounded-3xl hidden md:flex bg-[var(--bg-1)] xl:w-[332px] px-3 lg:px-4 py-2 justify-between border items-center">
@@ -149,6 +161,29 @@ export default function RootLayout({
               <ProfileDropdown />
             </div>
           </header>
+          <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
+            <div className="flex gap-2 items-center">
+              <div className="p-1 border border-[var(--primary)] rounded-full bg-white  grid place-content-center relative mx-auto">
+                <Image
+                  width={48}
+                  height={48}
+                  src="/img/team-1.jpg"
+                  alt="image"
+                  className="rounded-full"
+                />
+                <div className="w-4 h-4 grid place-content-center rounded-full border-2 white text-white bg-primary absolute bottom-2 right-0">
+                  <CheckIcon className="w-3 h-3" />
+                </div>
+              </div>
+              <div className="text-white">
+                <h6 className="font-medium text-lg">Floyd Miles</h6>
+                <Link href="mailto:info@example.com">info@example.com</Link>
+              </div>
+            </div>
+            <Link href="/add-property" className="btn-primary">
+              <PlusCircleIcon className="w-5 h-5" /> Ajouter une disponibilité
+            </Link>
+          </div>
           <section>{children}</section>
         </div>
       </section>

@@ -198,12 +198,12 @@ export const menus = [
     title: "Dashboard",
     submenu: [
       {
-        title: "User Dashboard",
-        url: "/passager-dashboard",
+        title: "Dashboard conducteur sans vehicule",
+        url: "/vendor-dashboard",
       },
       {
-        title: "conductor Dashboard",
-        url: "/conductor-dashboard",
+        title: "Dashboard conducteur avec vehicule",
+        url: "/proprietaire-dashboard",
       },
       {
         title: "Admin Dashboard",

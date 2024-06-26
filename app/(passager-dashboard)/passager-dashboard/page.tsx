@@ -36,10 +36,6 @@ const Page = () => {
     <div className="bg-[var(--bg-2)]">
       <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
         <h2 className="h2 text-white">Dashboard Passager</h2>
-        <Link href="/add-property" className="btn-primary">
-          <PlusCircleIcon className="w-5 h-5" /> Ajouter une nouvelle
-          statistique
-        </Link>
       </div>
       {/* statisticts */}
       <section className="grid z-[1] grid-cols-12 gap-4 lg:gap-6 px-3 lg:px-6 bg-[var(--bg-2)] relative after:absolute after:bg-[var(--dark)] after:w-full after:h-[100px] after:top-0 after:left-0 after:z-[-1] pb-10 xxl:pb-0">
@@ -201,13 +197,12 @@ const Page = () => {
             <table className="w-full whitespace-nowrap">
               <thead>
                 <tr className="text-left bg-[var(--bg-1)] border-b border-dashed">
-                  <th className="py-3 lg:py-4 px-2 xl:px-4">Itinéraire</th>
+                  <th className="py-3 lg:py-4 px-2 xl:px-4">Nom voyage</th>
                   <th className="py-3 lg:py-4 px-2">Lieu départ</th>
                   <th className="py-3 lg:py-4 px-2">Conducteurs</th>
                   <th className="py-3 lg:py-4 px-2">Date</th>
                   <th className="py-3 lg:py-4 px-2">Status</th>
                   <th className="py-3 lg:py-4 px-2">Avis</th>
-                  <th className="py-3 lg:py-4 px-2">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -234,14 +229,6 @@ const Page = () => {
                           <StarIcon className="w-5 h-5 text-[var(--tertiary)]" />
                           {review}
                         </span>
-                      </td>
-                      <td className="py-3 lg:py-4 px-2">
-                        <button className="text-primary px-2">
-                          <PencilSquareIcon className="w-5 h-5" />
-                        </button>
-                        <button className="text-[var(--secondary-500)] px-2">
-                          <TrashIcon className="w-5 h-5" />
-                        </button>
                       </td>
                     </tr>
                   )
