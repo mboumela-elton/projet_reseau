@@ -30,6 +30,128 @@ import {
 } from "../../../api/apiRoutes";
 
 const Page = () => {
+  /*******************************************************************************/
+  // fontion pour afficher le 1er cadrant des statistiques
+  /***************************************************************************** */
+  const [data1, setData1] = useState();
+  const [data11, setData11] = useState();
+
+  const fetchData1 = () => {
+    axios
+      .get(getAdminData1)
+      .then((res) => {
+        setData11(res.data);
+        setData1(res.data[0]);
+      })
+      .catch((error) => {
+        console.error("error fetch data 1 : " + error);
+      });
+  };
+
+  useEffect(() => {
+    fetchData1();
+  }, []);
+
+  const [selectedOption, setSelectedOption] = useState("1");
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+    // Effectuer d'autres actions en fonction de l'option sélectionnée
+    switch (event.target.value) {
+      case "1":
+        // Charger les données des 7 derniers mois
+        fetchDataForLastYear();
+        break;
+      case "2":
+        fetchDataForLastMonth();
+        break;
+      case "3":
+        // Charger les données des 7 derniers jours
+        fetchDataForLastWeek();
+        break;
+      case "4":
+        // Charger les données des 7 dernières heures
+        fetchDataForLastDay();
+        break;
+      default:
+        break;
+    }
+  };
+
+  const fetchDataForLastYear = () => {
+    setData1(data11[0]);
+  };
+
+  const fetchDataForLastMonth = () => {
+    setData1(data11[1]);
+  };
+
+  const fetchDataForLastWeek = () => {
+    setData1(data11[2]);
+  };
+
+  const fetchDataForLastDay = () => {
+    setData1(data11[3]);
+  };
+
+  /*******************************************************************************/
+  // fontion pour afficher le 2e cadrant des statistiques
+  /***************************************************************************** */
+  const [data2, setData2] = useState();
+
+  const fetchData2 = () => {
+    axios
+      .get(getAdminData2)
+      .then((res) => {
+        setData2(res.data);
+      })
+      .catch((error) => {
+        console.error("error fetch data 2 : " + error);
+      });
+  };
+
+  useEffect(() => {
+    fetchData2();
+  }, []);
+
+  /*******************************************************************************/
+  // fontion pour afficher le 3e cadrant des statistiques
+  /***************************************************************************** */
+  const [data3, setData3] = useState();
+
+  const fetchData3 = () => {
+    axios
+      .get(getAdminData3)
+      .then((res) => {
+        setData3(res.data);
+      })
+      .catch((error) => {
+        console.error("error fetch data 3 : " + error);
+      });
+  };
+  useEffect(() => {
+    fetchData3();
+  }, []);
+
+  /*******************************************************************************/
+  // fontion pour afficher le 4e cadrant des statistiques
+  /***************************************************************************** */
+  const [data4, setData4] = useState();
+
+  const fetchData4 = () => {
+    axios
+      .get(getAdminData4)
+      .then((res) => {
+        setData4(res.data);
+      })
+      .catch((error) => {
+        console.error("error fetch data 4 : " + error);
+      });
+  };
+
+  useEffect(() => {
+    fetchData4();
+  }, []);
+
   /**************************************************************************************/
   // fonctions liés au tableau
   /**************************************************************************************/
@@ -44,12 +166,14 @@ const Page = () => {
   }
 
   let [sortList, setSortList] = useState<Listing[]>([]);
+  let [sortList2, setSortList2] = useState<Listing[]>([]);
 
   const fetchDataJournal = () => {
     axios
       .get(getAdminJournal)
       .then((res) => {
         setSortList(res.data);
+        setSortList2(res.data);
       })
       .catch((error) => {
         console.error("error fetch data Journal : " + error);
@@ -92,7 +216,7 @@ const Page = () => {
 
   const handleClickDate = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAns(false);
-    setSortList(sortByDate(adminRecentListings));
+    setSortList(sortByDate(sortList2));
     setTimeout(() => {
       setAns(true);
     }, 100);
@@ -100,16 +224,15 @@ const Page = () => {
 
   const handleClickName = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAns(false);
-    setSortList(sortByName(adminRecentListings));
+    setSortList(sortByName(sortList2));
     setTimeout(() => {
       setAns(true);
     }, 200);
-    console.log(sortList);
   };
 
   const handleClickLocation = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAns(false);
-    setSortList(sortByLocation(adminRecentListings));
+    setSortList(sortByLocation(sortList2));
     setTimeout(() => {
       setAns(true);
     }, 100);
@@ -117,7 +240,7 @@ const Page = () => {
 
   const handleClickAgent = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAns(false);
-    setSortList(sortByAgent(adminRecentListings));
+    setSortList(sortByAgent(sortList2));
     setTimeout(() => {
       setAns(true);
     }, 100);
@@ -125,7 +248,7 @@ const Page = () => {
 
   const handleClickStatus = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAns(false);
-    setSortList(sortByStatus(adminRecentListings));
+    setSortList(sortByStatus(sortList2));
     setTimeout(() => {
       setAns(true);
     }, 100);
@@ -133,137 +256,11 @@ const Page = () => {
 
   const handleClickReview = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAns(false);
-    setSortList(sortByReview(adminRecentListings));
+    setSortList(sortByReview(sortList2));
     setTimeout(() => {
       setAns(true);
     }, 100);
   };
-
-  /*******************************************************************************/
-  // fontion pour afficher le 1er cadrant des statistiques
-  /***************************************************************************** */
-  const [data1, setData1] = useState();
-
-  const fetchData1 = () => {
-    axios
-      .get(getAdminData1)
-      .then((res) => {
-        setData1(res.data);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.error("error fetch data 1 : " + error);
-      });
-  };
-
-  useEffect(() => {
-    fetchData1();
-  }, []);
-
-  const [selectedOption, setSelectedOption] = useState("1");
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-    // Effectuer d'autres actions en fonction de l'option sélectionnée
-    switch (event.target.value) {
-      case "1":
-        // Charger les données des 7 derniers mois
-        fetchDataForLastMonths();
-        break;
-      case "2":
-        // Charger les données des 7 dernières semaines
-        fetchDataForLastWeeks();
-        break;
-      case "3":
-        // Charger les données des 7 derniers jours
-        fetchDataForLastDays();
-        break;
-      case "4":
-        // Charger les données des 7 dernières heures
-        fetchDataForHours();
-        break;
-      default:
-        break;
-    }
-  };
-  
-  const fetchDataForLastYear = () => {
-    // Logique pour charger les données des 7 dernières heures
-  };
-
-  const fetchDataForLastMonth = () => {
-    // Logique pour charger les données des 7 derniers mois
-  };
-
-  const fetchDataForLastWeek = () => {
-    // Logique pour charger les données des 7 dernières semaines
-  };
-
-  const fetchDataForLastDay = () => {
-    // Logique pour charger les données des 7 derniers jours
-  };
-
-  const fetchDataForLastHour = () => {
-    // Logique pour charger les données des 7 dernières heures
-  };
-
-  /*******************************************************************************/
-  // fontion pour afficher le 2e cadrant des statistiques
-  /***************************************************************************** */
-  const [data2, setData2] = useState();
-
-  const fetchData2 = () => {
-    axios
-      .get(getAdminData2)
-      .then((res) => {
-        setData2(res.data);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.error("error fetch data 2 : " + error);
-      });
-  };
-
-  useEffect(() => {
-    fetchData2();
-  }, []);
-
-  /*******************************************************************************/
-  // fontion pour afficher le 3e cadrant des statistiques
-  /***************************************************************************** */
-  const [data3, setData3] = useState();
-
-  const fetchData3 = () => {
-    axios
-      .get(getAdminData3)
-      .then((res) => {
-        setData3(res.data);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.error("error fetch data 3 : " + error);
-      });
-  };
-
-  /*******************************************************************************/
-  // fontion pour afficher le 4e cadrant des statistiques
-  /***************************************************************************** */
-  const [data4, setData4] = useState();
-
-  const fetchData4 = () => {
-    axios
-      .get(getAdminData4)
-      .then((res) => {
-        setData4(res.data);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.error("error fetch data 4 : " + error);
-      });
-  };
-
-  useEffect(() => {
-    fetchData4();
-  }, []);
 
   return (
     <div className="bg-[var(--bg-2)]">
@@ -290,10 +287,10 @@ const Page = () => {
                         onChange={handleOptionChange}
                         className="focus:outline-none"
                       >
-                        <option value="1">Last 7 Months</option>
-                        <option value="2">Last 7 Weeks</option>
-                        <option value="3">Last 7 Days</option>
-                        <option value="4">Last 7 Hours</option>
+                        <option value="1">Last Year</option>
+                        <option value="2">Last Month</option>
+                        <option value="3">Last Week</option>
+                        <option value="4">Last Day</option>
                       </select>
                     </div>
                   </div>
@@ -313,7 +310,7 @@ const Page = () => {
                     <i className="las self-center la-chart-bar rounded-full bg-[#9c742B] text-white text-3xl p-4"></i>
                     <div>
                       <h2 className="text-lg md:text-2xl md:font-semibold xxl:4xl xxl:font-semibold 3xl:text-[40px]">
-                        <CounterElement end={data1.nbrVoyage} decimals={1} />
+                        <CounterElement end={data1.nbrVoyage} decimals={0} />
                       </h2>
                       <p>nombre de voyages</p>
                     </div>
@@ -324,7 +321,7 @@ const Page = () => {
                       <h2 className="text-lg md:text-2xl md:font-semibold xxl:4xl xxl:font-semibold 3xl:text-[40px]">
                         <CounterElement
                           end={data1.vehiculeTypeNbr}
-                          decimals={1}
+                          decimals={0}
                         />
                       </h2>
                       <p>Type de véhicule</p>
@@ -345,7 +342,7 @@ const Page = () => {
                 <div className="col-span-12 sm:col-span-6 border xl:col-span-4 xxl:col-span-4 flex flex-col justify-center items-center p-4 md:p-6 lg:p-8 rounded-2xl bg-white">
                   <div className="w-[200px] h-[200px] flex justify-center items-center rounded-full border-primary border-[14px]">
                     <h2 className="text-lg md:text-2xl md:font-semibold xxl:4xl xxl:font-semibold 3xl:text-[40px]">
-                      <CounterElement end={data2.passager} decimals={1} />k
+                      <CounterElement end={data2.passager} decimals={0} />k
                     </h2>
                   </div>
                   <span className="text-2xl font-semibold mt-4">passager</span>
@@ -354,7 +351,7 @@ const Page = () => {
                 <div className="col-span-12 sm:col-span-6 border xl:col-span-4 xxl:col-span-4 flex flex-col justify-center items-center p-4 md:p-6 lg:p-8 rounded-2xl bg-white">
                   <div className="w-[200px] h-[200px] flex justify-center items-center rounded-full border-[#37D279] border-[14px]">
                     <h2 className="text-lg md:text-2xl md:font-semibold xxl:4xl xxl:font-semibold 3xl:text-[40px]">
-                      <CounterElement end={data2.conducteur} decimals={1} />k
+                      <CounterElement end={data2.conducteur} decimals={0} />k
                     </h2>
                   </div>
                   <span className="text-2xl font-semibold mt-4">
@@ -390,7 +387,7 @@ const Page = () => {
               <i className="las self-center la-chart-bar rounded-full bg-[#9c742B] text-white text-3xl p-4"></i>
               <div>
                 <h2 className="text-lg md:text-2xl md:font-semibold xxl:4xl xxl:font-semibold 3xl:text-[40px]">
-                  <CounterElement end={data3.visiteur} decimals={1} />k
+                  <CounterElement end={data3.visiteur} decimals={0} />
                 </h2>
 
                 <p>Visiteurs</p>
@@ -400,7 +397,7 @@ const Page = () => {
               <i className="las self-center la-file-alt rounded-full bg-primary text-white text-3xl p-4"></i>
               <div>
                 <h2 className="text-lg md:text-2xl md:font-semibold xxl:4xl xxl:font-semibold 3xl:text-[40px]">
-                  <CounterElement end={data3.utilisateur} decimals={1} />
+                  <CounterElement end={data3.utilisateur} decimals={0} />
                 </h2>
 
                 <p>Liste de visiteurs inscrits</p>
@@ -429,6 +426,7 @@ const Page = () => {
         </div>
       )}
 
+      {/* cadrant du tableau*/}
       <section className="bg-[var(--bg-2)] px-3 lg:px-6 pb-4 lg:pb-6 mt-4 lg:mt-6">
         <div className="p-3 sm:p-4 md:py-6 lg:py-8 md:px-8 lg:px-10 border rounded-2xl bg-white">
           <div className="flex flex-wrap gap-2 justify-between mb-7">

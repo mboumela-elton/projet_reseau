@@ -50,6 +50,7 @@ const Page = () => {
           <PlusCircleIcon className="w-5 h-5" /> Add New Listing
         </Link>
       </div>
+      
       {/* statisticts */}
       <section className="grid z-[1] grid-cols-12 gap-4 lg:gap-6 px-3 lg:px-6 bg-[var(--bg-2)] relative after:absolute after:bg-[var(--dark)] after:w-full after:h-[100px] after:top-0 after:left-0 after:z-[-1] pb-10 xxl:pb-0">
         <div className="col-span-12 xxl:col-span-6">
